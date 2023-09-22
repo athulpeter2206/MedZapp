@@ -37,6 +37,7 @@ public class DoctorAppointment extends AppCompatActivity implements NavigationVi
     }
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()==R.id.nav_home){
+            startActivity(new Intent( DoctorAppointment.this, UserHome.class));
             onBackPressed();
         }else if(item.getItemId()==R.id.action_notification){
             Toast.makeText(this,"Coming Soon !",Toast.LENGTH_SHORT).show();
@@ -70,18 +71,28 @@ public class DoctorAppointment extends AppCompatActivity implements NavigationVi
         startActivity(obj);
     }
     public void onDieticianClick(View v){
-
+        Intent obj = new Intent(this, DoctorDetailsActivity.class);
+        obj.putExtra("title","Dietitian");
+        startActivity(obj);
     }
     public void onDentistClick(View v){
-
+        Intent obj = new Intent(this, DoctorDetailsActivity.class);
+        obj.putExtra("title","Dentist");
+        startActivity(obj);
     }
     public void onSurgClick(View v){
-
+        Intent obj = new Intent(this, DoctorDetailsActivity.class);
+        obj.putExtra("title","Surgeon");
+        startActivity(obj);
     }
     public void onCardioClick(View v){
-
+        Intent obj = new Intent(this, DoctorDetailsActivity.class);
+        obj.putExtra("title","Cardiologist");
+        startActivity(obj);
     }
     public void onOrthoClick(View v){
-
+        Intent obj = new Intent(this, DoctorDetailsActivity.class);
+        obj.putExtra("title","Orthopedic");
+        startActivity(obj);
     }
 }

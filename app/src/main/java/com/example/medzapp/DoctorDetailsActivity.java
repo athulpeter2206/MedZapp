@@ -65,8 +65,32 @@ public class DoctorDetailsActivity extends AppCompatActivity implements Navigati
     public void LoadDoc(String docType){
         LocalDate currentDate = LocalDate.now();
         LocalDate nextDate = currentDate.plusDays(1);
-        if(docType.compareTo("Family Physician")==0){
-            Toast.makeText(this,"Inside LoadDoc",Toast.LENGTH_SHORT).show();
+        if(docType.compareTo("Family Physician")==0) {
+//            Toast.makeText(this, "Inside LoadDoc", Toast.LENGTH_SHORT).show();
+            doc = cdb.getDoctorDetails(docType);
+            System.out.println(doc[0].Doc_Id);
+            etDN1.setText(doc[0].Doc_Name);
+            etAD1.setText(nextDate.toString());
+            etDN2.setText(doc[1].Doc_Name);
+            etAD2.setText(nextDate.toString());
+            etDN3.setText(doc[2].Doc_Name);
+            etAD3.setText(nextDate.toString());
+            etDN4.setText(doc[3].Doc_Name);
+            etAD4.setText(nextDate.toString());
+        }else if(docType.compareTo("Dietitian")==0){
+//            Toast.makeText(this,"Inside LoadDoc",Toast.LENGTH_SHORT).show();
+            doc = cdb.getDoctorDetails(docType);
+            System.out.println(doc[0].Doc_Id);
+            etDN1.setText(doc[0].Doc_Name);
+            etAD1.setText(nextDate.toString());
+            etDN2.setText(doc[1].Doc_Name);
+            etAD2.setText(nextDate.toString());
+            etDN3.setText(doc[2].Doc_Name);
+            etAD3.setText(nextDate.toString());
+            etDN4.setText(doc[3].Doc_Name);
+            etAD4.setText(nextDate.toString());
+        }else if(docType.compareTo("Dentist")==0){
+//            Toast.makeText(this,"Inside LoadDoc",Toast.LENGTH_SHORT).show();
             doc = cdb.getDoctorDetails(docType);
             System.out.println(doc[0].Doc_Id);
             etDN1.setText(doc[0].Doc_Name);
@@ -78,6 +102,49 @@ public class DoctorDetailsActivity extends AppCompatActivity implements Navigati
             etDN4.setText(doc[3].Doc_Name);
             etAD4.setText(nextDate.toString());
         }
+        else if(docType.compareTo("Surgeon")==0){
+//            Toast.makeText(this,"Inside LoadDoc",Toast.LENGTH_SHORT).show();
+            doc = cdb.getDoctorDetails(docType);
+            System.out.println(doc[0].Doc_Id);
+            etDN1.setText(doc[0].Doc_Name);
+            etAD1.setText(nextDate.toString());
+            etDN2.setText(doc[1].Doc_Name);
+            etAD2.setText(nextDate.toString());
+            etDN3.setText(doc[2].Doc_Name);
+            etAD3.setText(nextDate.toString());
+            etDN4.setText(doc[3].Doc_Name);
+            etAD4.setText(nextDate.toString());
+        }
+        else if(docType.compareTo("Cardiologist")==0){
+//            Toast.makeText(this,"Inside LoadDoc",Toast.LENGTH_SHORT).show();
+            doc = cdb.getDoctorDetails(docType);
+            System.out.println(doc[0].Doc_Id);
+            etDN1.setText(doc[0].Doc_Name);
+            etAD1.setText(nextDate.toString());
+            etDN2.setText(doc[1].Doc_Name);
+            etAD2.setText(nextDate.toString());
+            etDN3.setText(doc[2].Doc_Name);
+            etAD3.setText(nextDate.toString());
+            etDN4.setText(doc[3].Doc_Name);
+            etAD4.setText(nextDate.toString());
+        }
+        else if(docType.compareTo("Orthopedic")==0){
+//            Toast.makeText(this,"Inside LoadDoc",Toast.LENGTH_SHORT).show();
+            doc = cdb.getDoctorDetails(docType);
+            System.out.println(doc[0].Doc_Id);
+            etDN1.setText(doc[0].Doc_Name);
+            etAD1.setText(nextDate.toString());
+            etDN2.setText(doc[1].Doc_Name);
+            etAD2.setText(nextDate.toString());
+            etDN3.setText(doc[2].Doc_Name);
+            etAD3.setText(nextDate.toString());
+            etDN4.setText(doc[3].Doc_Name);
+            etAD4.setText(nextDate.toString());
+        }
+    }
+
+    public void onBackDocApp(View view){
+        startActivity(new Intent(this, DoctorAppointment.class));
     }
 
     @Override

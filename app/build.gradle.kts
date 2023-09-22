@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.medzapp"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -39,4 +39,5 @@ dependencies {
 
     implementation("com.github.bumptech.glide:glide:4.11.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
+
 }

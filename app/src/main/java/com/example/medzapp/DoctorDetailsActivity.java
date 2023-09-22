@@ -10,14 +10,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+
+import java.time.LocalDate;
 
 public class DoctorDetailsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Doctor doc[] = new Doctor[5];
+
+    TextView etDN1,etDN2,etDN3,etDN4,etAD1,etAD2,etAD3,etAD4;
+
+    TextView welcomeText;
     ClassForDB cdb = new ClassForDB(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +34,15 @@ public class DoctorDetailsActivity extends AppCompatActivity implements Navigati
         Toolbar toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawerDocDet);
         navigationView = findViewById(R.id.nav_view);
+        etDN1 = (TextView) findViewById(R.id.etDName);
+        etDN2 = (TextView) findViewById(R.id.etDName2);
+        etDN3 = (TextView) findViewById(R.id.etDName3);
+        etDN4 = (TextView) findViewById(R.id.etDName4);
+        etAD1 = (TextView) findViewById(R.id.etAppointDate);
+        etAD2 = (TextView) findViewById(R.id.etAppointDate2);
+        etAD3 = (TextView) findViewById(R.id.etAppointDate3);
+        etAD4 = (TextView) findViewById(R.id.etAppointDate4);
+        welcomeText = findViewById(R.id.txtWelcome);
         setSupportActionBar(toolbar);
 
         navigationView.bringToFront();
@@ -37,14 +54,29 @@ public class DoctorDetailsActivity extends AppCompatActivity implements Navigati
         navigationView.setCheckedItem(R.id.nav_doc_app);
 
         Intent obj = getIntent();
+
         String docType = obj.getStringExtra("title");
+        welcomeText.setText(docType);
+        Toast.makeText(this,docType,Toast.LENGTH_SHORT).show();
 
         LoadDoc(docType);
     }
 
     public void LoadDoc(String docType){
-        if(docType.compareTo("FamilyPhysician")==0){
+        LocalDate currentDate = LocalDate.now();
+        LocalDate nextDate = currentDate.plusDays(1);
+        if(docType.compareTo("Family Physician")==0){
+            Toast.makeText(this,"Inside LoadDoc",Toast.LENGTH_SHORT).show();
             doc = cdb.getDoctorDetails(docType);
+            System.out.println(doc[0].Doc_Id);
+            etDN1.setText(doc[0].Doc_Name);
+            etAD1.setText(nextDate.toString());
+            etDN2.setText(doc[1].Doc_Name);
+            etAD2.setText(nextDate.toString());
+            etDN3.setText(doc[2].Doc_Name);
+            etAD3.setText(nextDate.toString());
+            etDN4.setText(doc[3].Doc_Name);
+            etAD4.setText(nextDate.toString());
         }
     }
 

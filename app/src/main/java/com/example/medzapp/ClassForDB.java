@@ -140,6 +140,7 @@ public class ClassForDB extends SQLiteOpenHelper {
     }
 
     public Doctor[] getDoctorDetails(String spec) {
+        System.out.println(spec);
         Doctor a[] = new Doctor[5];
         try {
             SQLiteDatabase db = this.getReadableDatabase();
@@ -147,11 +148,12 @@ public class ClassForDB extends SQLiteOpenHelper {
             String selection = "Specialization" + "=?";
             String[] selectionArgs = {spec};
             Cursor cursor = db.query("DOCTOR", columns, selection, selectionArgs, null, null, null);
-            System.out.println(cursor);
+            System.out.println(db.query("DOCTOR", columns, selection, selectionArgs, null, null, null));
             int count=cursor.getCount();
             if (cursor != null && cursor.getCount() != 0) {
                 int i = 0; // Initialize i outside of the loop
                 while (cursor.moveToNext() && i < count) { // Use a while loop to iterate through the cursor
+                    a[i] = new Doctor();
                     a[i].Doc_Id = cursor.getInt(cursor.getColumnIndexOrThrow("Doc_Id"));
                     a[i].Doc_Name = cursor.getString(cursor.getColumnIndexOrThrow("Doc_Name"));
                     a[i].Doc_HospAddress = cursor.getString(cursor.getColumnIndexOrThrow("Doc_HospAddress"));

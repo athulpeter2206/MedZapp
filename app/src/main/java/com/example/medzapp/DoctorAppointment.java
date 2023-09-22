@@ -66,7 +66,7 @@ public class DoctorAppointment extends AppCompatActivity implements NavigationVi
 
     public void onFamPhyClick(View v){
         Intent obj = new Intent(this, DoctorDetailsActivity.class);
-        obj.putExtra("title","FamilyPhysician");
+        obj.putExtra("title","Family Physician");
         startActivity(obj);
     }
     public void onDieticianClick(View v){
